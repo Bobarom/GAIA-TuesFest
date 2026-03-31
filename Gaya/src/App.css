@@ -1,0 +1,58 @@
+/* Пълно нулиране на всичко */
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Премахваме ограниченията от най-главните контейнери на React */
+html, body, #root, .App {
+  width: 100% ;
+  min-width: 100% ;
+  margin: 0 ;
+  padding: 0 ;
+  overflow-x: hidden;
+}
+
+/* Секциите - Задължително на цял екран */
+.hero, .features, .about, .cta, footer {
+  width: 100% ;
+  display: block; /* Уверяваме се, че не са ограничени като инлайн елементи */
+  margin-left: 0 ;
+  margin-right: 0 ;
+}
+
+/* HERO - Специално внимание тук */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+              url("https://images.pexels.com/photos/4794708/pexels-photo-4794708.jpeg?auto=compress&cs=tinysrgb&w=1920") 
+              center center/cover no-repeat;
+  height: 80vh;
+  display: flex !important; /* Връщаме флекса за центриране на текста */
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* FEATURES - Разпъваме картите */
+.features {
+  background: #f7f7f7;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 80px 20px !important; /* Даваме малко вътрешно разстояние, вместо марж отвън */
+}
+
+.feature {
+  flex: 1 1 300px;
+  max-width: none !important; /* МАХАМЕ ограничението за ширина */
+  margin: 10px !important;
+  text-align: center;
+}
+
+/* Корекция на бутоните, за да не се разтегнат и те на цял екран */
+.btn-primary, .btn-secondary {
+  width: auto !important;
+  display: inline-block !important;
+  padding: 15px 30px !important;
+}
