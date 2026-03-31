@@ -2,6 +2,7 @@
 const FLASK_URL = process.env.FLASK_URL || "http://10.210.46.104:5500"
 
 const nextConfig = {
+  devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,
   },

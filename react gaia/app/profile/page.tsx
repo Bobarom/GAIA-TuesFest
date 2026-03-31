@@ -16,6 +16,7 @@ interface CurrentUser {
   firstname: string
   lastname: string
   mac_address: string | null
+  mac_name: string | null
   agriculture: string | null
   country: string | null
   province: string | null
@@ -26,6 +27,7 @@ interface CurrentUser {
 export default function ProfilePage() {
   const [user, setUser] = useState<CurrentUser | null>(null)
   const [macInput, setMacInput] = useState("")
+  const [macNameInput, setMacNameInput] = useState("")
   const [macEditing, setMacEditing] = useState(false)
   const [macError, setMacError] = useState("")
   const [macSaving, setMacSaving] = useState(false)
@@ -141,17 +143,18 @@ export default function ProfilePage() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ mac_address: macInput }),
+        body: JSON.stringify({ mac_address: macInput, mac_name: macNameInput || null }),
       })
       const data = await res.json()
       if (!res.ok) {
         setMacError(data.message || "Failed to save")
         return
       }
-      const updated = { ...user!, mac_address: data.mac_address }
+      const updated = { ...user!, mac_address: data.mac_address, mac_name: data.mac_name ?? (macNameInput || null) }
       setUser(updated)
       localStorage.setItem("currentUser", JSON.stringify(updated))
       setMacInput("")
+      setMacNameInput("")
       setMacEditing(false)
     } catch {
       setMacError("Cannot connect to server")
@@ -211,12 +214,15 @@ export default function ProfilePage() {
                   {!macEditing && (
                     <div className="flex items-center gap-3">
                       {user.mac_address ? (
-                        <span className="text-gray-900 dark:text-gray-100 font-semibold font-mono">{user.mac_address}</span>
+                        <span className="text-gray-900 dark:text-gray-100 font-semibold">
+                          {user.mac_name && <span className="mr-2">{user.mac_name}</span>}
+                          <span className="font-mono text-gray-500 dark:text-gray-400">{user.mac_address}</span>
+                        </span>
                       ) : (
                         <span className="text-gray-300 dark:text-gray-600 text-sm italic">{t("not_set")}</span>
                       )}
                       <button
-                        onClick={() => { setMacInput(user.mac_address ?? ""); setMacEditing(true); setMacError("") }}
+                        onClick={() => { setMacInput(user.mac_address ?? ""); setMacNameInput(user.mac_name ?? ""); setMacEditing(true); setMacError("") }}
                         className="text-xs text-amber-500 hover:text-amber-600 font-semibold transition-colors"
                       >
                         {user.mac_address ? t("change") : t("set")}
@@ -226,28 +232,37 @@ export default function ProfilePage() {
                 </div>
 
                 {macEditing && (
-                  <div className="mt-3 flex gap-2">
+                  <div className="mt-3 space-y-2">
                     <input
                       type="text"
-                      value={macInput}
-                      onChange={(e) => setMacInput(e.target.value)}
-                      placeholder="AA:BB:CC:DD:EE:FF"
+                      value={macNameInput}
+                      onChange={(e) => setMacNameInput(e.target.value)}
+                      placeholder={t("profile_mac_name_placeholder")}
                       autoFocus
-                      className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-mono placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
                     />
-                    <button
-                      onClick={handleSaveMac}
-                      disabled={macSaving || !macInput.trim()}
-                      className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-sm font-bold transition-colors"
-                    >
-                      {macSaving ? t("saving") : t("save")}
-                    </button>
-                    <button
-                      onClick={() => { setMacEditing(false); setMacError("") }}
-                      className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-sm transition-colors"
-                    >
-                      {t("cancel")}
-                    </button>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={macInput}
+                        onChange={(e) => setMacInput(e.target.value)}
+                        placeholder="AA:BB:CC:DD:EE:FF"
+                        className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-mono placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
+                      />
+                      <button
+                        onClick={handleSaveMac}
+                        disabled={macSaving || !macInput.trim()}
+                        className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-sm font-bold transition-colors"
+                      >
+                        {macSaving ? t("saving") : t("save")}
+                      </button>
+                      <button
+                        onClick={() => { setMacEditing(false); setMacError("") }}
+                        className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-sm transition-colors"
+                      >
+                        {t("cancel")}
+                      </button>
+                    </div>
                   </div>
                 )}
                 {macError && <p className="mt-2 text-red-500 text-xs">{macError}</p>}

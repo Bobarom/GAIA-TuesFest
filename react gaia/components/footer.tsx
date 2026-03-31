@@ -20,9 +20,9 @@ export function Footer() {
           {/* Social links */}
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com/kganev26/HackTues12"
+              href="https://github.com/Bobarom/GAIA-TuesFest"
               target="_blank"
-              className="text-white/40 hover:text-white transition-colors"
+              className="text-white/40 hover:text-amber-400 transition-all duration-300 hover:scale-125 hover:translate-y-[-2px]"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -30,16 +30,15 @@ export function Footer() {
             <Link
               href="https://mail.google.com/mail/?view=cm&fs=1&to=petar.t.kavrakov.2024@elsys-bg.org"
               target="_blank"
-              className="text-white/40 hover:text-white transition-colors"
+              className="text-white/40 hover:text-amber-400 transition-all duration-300 hover:scale-125 hover:translate-y-[-2px]"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
             </Link>
             <Link
-              href="https://discord.gg/ATaKTAVft3"
-              target="_blank"
-              className="text-white/40 hover:text-white transition-colors"
-              aria-label="Discord"
+              href="sms:+35988827284"
+              className="text-white/40 hover:text-amber-400 transition-all duration-300 hover:scale-125 hover:translate-y-[-2px]"
+              aria-label="Send SMS"
             >
               <MessageCircle className="w-5 h-5" />
             </Link>
@@ -55,16 +54,13 @@ export function Footer() {
             © {new Date().getFullYear()} Gaia. {t("footer_rights")}
           </p>
           <nav className="flex items-center gap-6">
-            <Link href="/" className="text-white/40 hover:text-white text-sm transition-colors">
+            <Link href="/" className="text-white/40 hover:text-amber-400 text-sm transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
               {t("footer_home")}
             </Link>
-            <Link href="/#features" className="text-white/40 hover:text-white text-sm transition-colors">
-              {t("footer_features")}
-            </Link>
-            <Link href="/about" className="text-white/40 hover:text-white text-sm transition-colors">
+            <Link href="/about" className="text-white/40 hover:text-amber-400 text-sm transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
               {t("footer_about")}
             </Link>
-            <Link href="/login" className="text-white/40 hover:text-white text-sm transition-colors">
+            <Link href="/login" className="text-white/40 hover:text-amber-400 text-sm transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
               {t("footer_login")}
             </Link>
           </nav>

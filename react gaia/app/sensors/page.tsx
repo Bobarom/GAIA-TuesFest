@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useLanguage } from "@/lib/language-context"
 import type { TranslationKey } from "@/lib/translations"
 import AuthGuard from "@/components/auth-guard"
+import { Footer } from "@/components/footer"
 
 const GRAFANA_BASE = "http://10.210.46.104:3000"
 const DASHBOARD_UID = "gaia-sensors"
@@ -71,12 +72,16 @@ export default function SensorsPage() {
   const [from, setFrom] = useState("now-7d")
   const [refresh, setRefresh] = useState("30s")
   const [userId, setUserId] = useState<string | null>(null)
+  const [macAddress, setMacAddress] = useState<string | null>(null)
+  const [macName, setMacName] = useState<string | null>(null)
 
   useEffect(() => {
     const stored = localStorage.getItem("currentUser")
     if (stored) {
       const user = JSON.parse(stored)
       setUserId(String(user.id))
+      setMacAddress(user.mac_address || null)
+      setMacName(user.mac_name || null)
     }
   }, [])
 
@@ -91,15 +96,12 @@ export default function SensorsPage() {
     })
     if (refresh) params.set("refresh", refresh)
     if (userId) params.set("var-user_id", userId)
-    // __feature.dashboardScene uses a dot which URLSearchParams encodes — set it raw
     return `${GRAFANA_BASE}/d-solo/${DASHBOARD_UID}/${DASHBOARD_SLUG}?${params.toString().replace("__feature_dashboardScene", "__feature.dashboardScene")}`
   }
 
-  const selectedRange = TIME_RANGES.find((r) => r.value === from)?.label ?? ""
-
   return (
     <AuthGuard>
-    <main className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white">
+    <main className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white flex flex-col">
       {/* Header */}
       <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-5 flex items-center gap-4">
         <Link href="/" className="text-3xl font-black text-amber-500 tracking-widest hover:opacity-80 transition-opacity">GAIA</Link>
@@ -109,59 +111,71 @@ export default function SensorsPage() {
         </span>
       </div>
 
-      {/* Title + controls */}
-      <div className="px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t("sensors_title")}</h1>
-          <p className="text-gray-500 dark:text-white/50 text-sm">
-            {t("sensors_showing")} {selectedRange}
-            {refresh ? ` · ${t("sensors_auto_refresh")} ${refresh}` : ` · ${t("sensors_auto_refresh_off")}`}.
-          </p>
-        </div>
+      <div className="flex-1">
+        {/* Title + controls */}
+        <div className="px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t("sensors_title")}</h1>
+            <p className="text-gray-500 dark:text-white/50 text-sm">
+              {macAddress ? (
+                <>
+                  {macName && <span className="font-semibold text-gray-700 dark:text-white/70">{macName} · </span>}
+                  <span className="font-mono">{macAddress}</span>
+                </>
+              ) : (
+                <Link href="/profile" className="text-amber-500 hover:text-amber-600 transition-colors">
+                  {t("sensors_no_mac")}
+                </Link>
+              )}
+            </p>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-3">
-          <SelectGroup
-            label={t("sensors_range")}
-            options={TIME_RANGES}
-            value={from}
-            onChange={setFrom}
-          />
-          <SelectGroup
-            label={t("sensors_refresh")}
-            options={REFRESH_RATES}
-            value={refresh}
-            onChange={setRefresh}
-          />
-        </div>
-      </div>
-
-      {/* 2×2 panel grid */}
-      <div className="px-8 pb-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-        {panels.map((panel) => (
-          <div
-            key={panel.id}
-            className="rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-[#141414]"
-          >
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-200 dark:border-white/10">
-              <span className="text-lg">{panel.icon}</span>
-              <span className="text-sm font-semibold text-gray-700 dark:text-white/80">{t(panel.labelKey)}</span>
-            </div>
-            <iframe
-              key={`${panel.id}-${from}-${refresh}`}
-              src={panelUrl(panel.id)}
-              width="100%"
-              height="260"
-              style={{ border: "none" }}
-              title={t(panel.labelKey)}
-              className="block"
+          <div className="flex flex-col sm:flex-row gap-3">
+            <SelectGroup
+              label={t("sensors_range")}
+              options={TIME_RANGES}
+              value={from}
+              onChange={setFrom}
+            />
+            <SelectGroup
+              label={t("sensors_refresh")}
+              options={REFRESH_RATES}
+              value={refresh}
+              onChange={setRefresh}
             />
           </div>
-        ))}
+        </div>
+
+        {/* 2×2 panel grid */}
+        <div className="px-8 pb-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {panels.map((panel) => (
+            <div
+              key={panel.id}
+              className="rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-[#141414]"
+            >
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-200 dark:border-white/10">
+                <span className="text-lg">{panel.icon}</span>
+                <span className="text-sm font-semibold text-gray-700 dark:text-white/80">{t(panel.labelKey)}</span>
+              </div>
+              <iframe
+                key={`${panel.id}-${from}-${refresh}`}
+                src={panelUrl(panel.id)}
+                width="100%"
+                height="260"
+                style={{ border: "none" }}
+                title={t(panel.labelKey)}
+                className="block"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="px-8 pb-8 text-center text-gray-400 dark:text-white/25 text-xs">
+          {t("powered_by")}
+        </div>
       </div>
 
-      <div className="px-8 pb-8 text-center text-gray-400 dark:text-white/25 text-xs">
-        {t("powered_by")}
-      </div>
+      <Footer />
     </main>
     </AuthGuard>
   )
