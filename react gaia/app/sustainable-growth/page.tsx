@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { Leaf, Droplets, Factory, CheckCircle } from "lucide-react"
+import { Leaf, Droplets, Factory } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/lib/language-context"
 import type { TranslationKey } from "@/lib/translations"
@@ -23,7 +23,7 @@ export default function SustainableGrowthPage() {
       <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-5 flex items-center gap-4">
         <Link href="/" className="text-3xl font-black text-amber-500 tracking-widest hover:opacity-80 transition-opacity">GAIA</Link>
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-700" />
-        <span className="text-gray-400 text-sm font-medium uppercase tracking-widest">
+        <span className="text-gray-400 text-base font-medium uppercase tracking-widest">
           {t("sg_heading")}
         </span>
       </div>
@@ -67,11 +67,10 @@ export default function SustainableGrowthPage() {
             {benefitKeys.map((key, i) => (
               <div
                 key={key}
-                className="flex items-start gap-3 bg-stone-50 dark:bg-gray-800 rounded-xl p-4 border border-stone-100 dark:border-gray-700 animate-fade-in"
+                className="bg-stone-50 dark:bg-gray-800 rounded-xl p-4 border border-stone-100 dark:border-gray-700 animate-fade-in"
                 style={{ animationDelay: `${80 + i * 70}ms` }}
               >
-                <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
-                <span className="text-stone-600 dark:text-stone-400 leading-relaxed text-sm">{t(key)}</span>
+                <span className="text-stone-600 dark:text-stone-400 leading-relaxed text-base">{t(key)}</span>
               </div>
             ))}
           </div>

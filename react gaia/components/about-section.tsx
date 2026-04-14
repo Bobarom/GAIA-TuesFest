@@ -12,7 +12,7 @@ export function AboutSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span
-            className="inline-block text-emerald-700 dark:text-emerald-400 text-sm font-medium tracking-widest uppercase mb-4 animate-fade-in"
+            className="inline-block text-emerald-700 dark:text-emerald-400 text-base font-medium tracking-widest uppercase mb-4 animate-fade-in"
             style={{ animationDelay: '0ms' }}
           >
             {t("about_label")}
@@ -39,14 +39,14 @@ export function AboutSection() {
           </p>
 
           <p
-            className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed animate-fade-in"
+            className="text-xl md:text-2xl text-stone-700 dark:text-stone-300 leading-relaxed font-light animate-fade-in"
             style={{ animationDelay: '450ms' }}
           >
             {t("about_p2")}
           </p>
 
           <p
-            className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed animate-fade-in"
+            className="text-xl md:text-2xl text-stone-700 dark:text-stone-300 leading-relaxed font-light animate-fade-in"
             style={{ animationDelay: '550ms' }}
           >
             {t("about_p3")}

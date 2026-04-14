@@ -47,13 +47,13 @@ function SelectGroup({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-gray-400 dark:text-white/40 text-xs uppercase tracking-widest">{label}</span>
+      <span className="w-28 shrink-0 text-left text-gray-400 dark:text-white/40 text-sm uppercase tracking-widest">{label}</span>
       <div className="flex rounded-lg overflow-hidden border border-gray-200 dark:border-white/10">
         {options.map((opt) => (
           <button
             key={opt.value}
             onClick={() => onChange(opt.value)}
-            className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+            className={`px-3 py-1.5 text-sm font-medium transition-colors ${
               value === opt.value
                 ? "bg-amber-400 text-black"
                 : "bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-white/60 hover:bg-gray-200 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white"
@@ -106,7 +106,7 @@ export default function SensorsPage() {
       <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-5 flex items-center gap-4">
         <Link href="/" className="text-3xl font-black text-amber-500 tracking-widest hover:opacity-80 transition-opacity">GAIA</Link>
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-700" />
-        <span className="text-gray-400 text-sm font-medium uppercase tracking-widest">
+        <span className="text-gray-400 text-base font-medium uppercase tracking-widest">
           {t("sensors_label")}
         </span>
       </div>
@@ -116,7 +116,7 @@ export default function SensorsPage() {
         <div className="px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t("sensors_title")}</h1>
-            <p className="text-gray-500 dark:text-white/50 text-sm">
+            <p className="text-gray-500 dark:text-white/50 text-base">
               {macAddress ? (
                 <>
                   {macName && <span className="font-semibold text-gray-700 dark:text-white/70">{macName} · </span>}
@@ -155,7 +155,7 @@ export default function SensorsPage() {
             >
               <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-200 dark:border-white/10">
                 <span className="text-lg">{panel.icon}</span>
-                <span className="text-sm font-semibold text-gray-700 dark:text-white/80">{t(panel.labelKey)}</span>
+                <span className="text-base font-semibold text-gray-700 dark:text-white/80">{t(panel.labelKey)}</span>
               </div>
               <iframe
                 key={`${panel.id}-${from}-${refresh}`}
@@ -170,9 +170,6 @@ export default function SensorsPage() {
           ))}
         </div>
 
-        <div className="px-8 pb-8 text-center text-gray-400 dark:text-white/25 text-xs">
-          {t("powered_by")}
-        </div>
       </div>
 
       <Footer />

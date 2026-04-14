@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="bg-[#0a0f0c] border-t border-white/5">
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Top section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-center gap-8 mb-12 text-center md:text-left">
           {/* Logo */}
           <Link href="/" className="group">
             <span className="text-5xl font-bold text-amber-400 tracking-wide">GAIA</span>
@@ -50,17 +50,17 @@ export function Footer() {
 
         {/* Bottom section */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-white/30 text-sm">
+          <p className="text-white/30 text-base">
             © {new Date().getFullYear()} Gaia. {t("footer_rights")}
           </p>
           <nav className="flex items-center gap-6">
-            <Link href="/" className="text-white/40 hover:text-amber-400 text-sm transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
+            <Link href="/" className="text-white/40 hover:text-amber-400 text-base transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
               {t("footer_home")}
             </Link>
-            <Link href="/about" className="text-white/40 hover:text-amber-400 text-sm transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
+            <Link href="/about" className="text-white/40 hover:text-amber-400 text-base transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
               {t("footer_about")}
             </Link>
-            <Link href="/login" className="text-white/40 hover:text-amber-400 text-sm transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
+            <Link href="/login" className="text-white/40 hover:text-amber-400 text-base transition-all duration-300 hover:scale-110 hover:translate-y-[-2px]">
               {t("footer_login")}
             </Link>
           </nav>

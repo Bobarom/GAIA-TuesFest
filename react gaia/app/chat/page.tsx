@@ -73,7 +73,7 @@ export default function ChatPage() {
       <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-5 flex items-center gap-4 shrink-0">
         <Link href="/" className="text-3xl font-black text-amber-500 tracking-widest hover:opacity-80 transition-opacity">GAIA</Link>
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-700" />
-        <span className="text-gray-400 text-sm font-medium uppercase tracking-widest">{t("chat_ai_assistant")}</span>
+        <span className="text-gray-400 text-base font-medium uppercase tracking-widest">{t("chat_ai_assistant")}</span>
       </div>
 
       {/* Messages */}
@@ -85,12 +85,12 @@ export default function ChatPage() {
               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
               {msg.role === "ai" && (
-                <div className="w-7 h-7 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-xs font-black text-amber-400 mr-2 mt-1 shrink-0">
+                <div className="w-7 h-7 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-sm font-black text-amber-400 mr-2 mt-1 shrink-0">
                   G
                 </div>
               )}
               <div
-                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                className={`max-w-[80%] px-4 py-3 rounded-2xl text-base leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
                     ? "bg-green-700 text-white rounded-br-sm"
                     : "bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-white/90 rounded-bl-sm"
@@ -103,10 +103,10 @@ export default function ChatPage() {
 
           {loading && (
             <div className="flex justify-start">
-              <div className="w-7 h-7 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-xs font-black text-amber-400 mr-2 mt-1 shrink-0">
+              <div className="w-7 h-7 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-sm font-black text-amber-400 mr-2 mt-1 shrink-0">
                 G
               </div>
-              <div className="bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 px-4 py-3 rounded-2xl rounded-bl-sm flex items-center gap-2 text-gray-400 dark:text-white/40 text-sm">
+              <div className="bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 px-4 py-3 rounded-2xl rounded-bl-sm flex items-center gap-2 text-gray-400 dark:text-white/40 text-base">
                 <Loader2 className="w-4 h-4 animate-spin" />
                 {t("chat_thinking")}
               </div>
@@ -114,7 +114,7 @@ export default function ChatPage() {
           )}
 
           {error && (
-            <p className="text-center text-red-400 text-xs">{error}</p>
+            <p className="text-center text-red-400 text-sm">{error}</p>
           )}
 
           <div ref={bottomRef} />
@@ -130,7 +130,7 @@ export default function ChatPage() {
             onKeyDown={handleKeyDown}
             rows={1}
             placeholder={t("chat_placeholder")}
-            className="flex-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 outline-none focus:border-amber-400/50 transition-colors resize-none"
+            className="flex-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-base text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 outline-none focus:border-amber-400/50 transition-colors resize-none"
             style={{ maxHeight: "120px", overflowY: "auto" }}
           />
           <button
@@ -141,7 +141,7 @@ export default function ChatPage() {
             <Send className="w-4 h-4" />
           </button>
         </div>
-        <p className="text-center text-gray-400 dark:text-white/20 text-xs mt-2">{t("chat_hint")}</p>
+        <p className="text-center text-gray-400 dark:text-white/20 text-sm mt-2">{t("chat_hint")}</p>
       </div>
     </div>
     </AuthGuard>

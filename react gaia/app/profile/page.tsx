@@ -170,7 +170,7 @@ export default function ProfilePage() {
       <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-5 flex items-center gap-4">
         <Link href="/" className="text-3xl font-black text-amber-500 tracking-widest hover:opacity-80 transition-opacity">GAIA</Link>
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-700" />
-        <span className="text-gray-400 text-sm font-medium uppercase tracking-widest">
+        <span className="text-gray-400 text-base font-medium uppercase tracking-widest">
           {t("profile_label")}
         </span>
       </div>
@@ -182,10 +182,10 @@ export default function ProfilePage() {
             {/* Card header */}
             <div className="flex items-center gap-3 px-6 py-4 border-b border-gray-100 dark:border-gray-800">
               
-              <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">{t("profile_account_details")}</span>
+              <span className="text-base font-semibold text-gray-600 dark:text-gray-300">{t("profile_account_details")}</span>
               <button
                 onClick={handleSignOut}
-                className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
+                className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
               >
                 <LogOut className="w-3.5 h-3.5" />
                 {t("profile_sign_out")}
@@ -195,22 +195,22 @@ export default function ProfilePage() {
             {/* Fields */}
             <div className="divide-y divide-gray-100 dark:divide-gray-800">
               <div className="px-6 py-4 flex justify-between items-center">
-                <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_username")}</span>
+                <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_username")}</span>
                 <span className="text-gray-900 dark:text-gray-100 font-semibold">@{user.username}</span>
               </div>
               <div className="px-6 py-4 flex justify-between items-center">
-                <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_first_name")}</span>
+                <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_first_name")}</span>
                 <span className="text-gray-900 dark:text-gray-100 font-semibold">{user.firstname}</span>
               </div>
               <div className="px-6 py-4 flex justify-between items-center">
-                <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_last_name")}</span>
+                <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_last_name")}</span>
                 <span className="text-gray-900 dark:text-gray-100 font-semibold">{user.lastname}</span>
               </div>
 
               {/* MAC Address row */}
               <div className="px-6 py-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_mac_address")}</span>
+                  <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_mac_address")}</span>
                   {!macEditing && (
                     <div className="flex items-center gap-3">
                       {user.mac_address ? (
@@ -219,11 +219,11 @@ export default function ProfilePage() {
                           <span className="font-mono text-gray-500 dark:text-gray-400">{user.mac_address}</span>
                         </span>
                       ) : (
-                        <span className="text-gray-300 dark:text-gray-600 text-sm italic">{t("not_set")}</span>
+                        <span className="text-gray-300 dark:text-gray-600 text-base italic">{t("not_set")}</span>
                       )}
                       <button
                         onClick={() => { setMacInput(user.mac_address ?? ""); setMacNameInput(user.mac_name ?? ""); setMacEditing(true); setMacError("") }}
-                        className="text-xs text-amber-500 hover:text-amber-600 font-semibold transition-colors"
+                        className="text-sm text-amber-500 hover:text-amber-600 font-semibold transition-colors"
                       >
                         {user.mac_address ? t("change") : t("set")}
                       </button>
@@ -239,7 +239,7 @@ export default function ProfilePage() {
                       onChange={(e) => setMacNameInput(e.target.value)}
                       placeholder={t("profile_mac_name_placeholder")}
                       autoFocus
-                      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-base placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
                     />
                     <div className="flex gap-2">
                       <input
@@ -247,34 +247,34 @@ export default function ProfilePage() {
                         value={macInput}
                         onChange={(e) => setMacInput(e.target.value)}
                         placeholder="AA:BB:CC:DD:EE:FF"
-                        className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-mono placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
+                        className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-base font-mono placeholder:text-gray-300 dark:placeholder:text-gray-600 outline-none focus:border-amber-400 transition-colors"
                       />
                       <button
                         onClick={handleSaveMac}
                         disabled={macSaving || !macInput.trim()}
-                        className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-sm font-bold transition-colors"
+                        className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-base font-bold transition-colors"
                       >
                         {macSaving ? t("saving") : t("save")}
                       </button>
                       <button
                         onClick={() => { setMacEditing(false); setMacError("") }}
-                        className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-sm transition-colors"
+                        className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-base transition-colors"
                       >
                         {t("cancel")}
                       </button>
                     </div>
                   </div>
                 )}
-                {macError && <p className="mt-2 text-red-500 text-xs">{macError}</p>}
+                {macError && <p className="mt-2 text-red-500 text-sm">{macError}</p>}
               </div>
 
               {/* Agriculture */}
               {user.agriculture && (
                 <div className="px-6 py-4">
-                  <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium block mb-2">{t("profile_agriculture")}</span>
+                  <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium block mb-2">{t("profile_agriculture")}</span>
                   <div className="flex flex-wrap gap-1.5">
                     {user.agriculture.split(",").map((a) => (
-                      <span key={a} className="px-2.5 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 rounded-full text-xs font-semibold capitalize">
+                      <span key={a} className="px-2.5 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 rounded-full text-sm font-semibold capitalize">
                         {a.replace(/_/g, " ")}
                       </span>
                     ))}
@@ -285,7 +285,7 @@ export default function ProfilePage() {
               {/* Country / Province */}
               {(user.country || user.province) && (
                 <div className="px-6 py-4 flex justify-between items-center">
-                  <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_region")}</span>
+                  <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_region")}</span>
                   <span className="text-gray-900 dark:text-gray-100 font-semibold text-right">
                     {[user.province, user.country].filter(Boolean).join(", ")}
                   </span>
@@ -295,17 +295,17 @@ export default function ProfilePage() {
               {/* Gender */}
               <div className="px-6 py-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_gender")}</span>
+                  <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_gender")}</span>
                   {!genderEditing && (
                     <div className="flex items-center gap-3">
                       {user.gender ? (
                         <span className="text-gray-900 dark:text-gray-100 font-semibold capitalize">{user.gender.replace(/_/g, " ")}</span>
                       ) : (
-                        <span className="text-gray-300 dark:text-gray-600 text-sm italic">{t("not_set")}</span>
+                        <span className="text-gray-300 dark:text-gray-600 text-base italic">{t("not_set")}</span>
                       )}
                       <button
                         onClick={() => { setGenderValue(user.gender ?? ""); setGenderEditing(true) }}
-                        className="text-xs text-amber-500 hover:text-amber-600 font-semibold transition-colors"
+                        className="text-sm text-amber-500 hover:text-amber-600 font-semibold transition-colors"
                       >
                         {user.gender ? t("change") : t("set")}
                       </button>
@@ -317,7 +317,7 @@ export default function ProfilePage() {
                     <select
                       value={genderValue}
                       onChange={(e) => setGenderValue(e.target.value)}
-                      className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm outline-none focus:border-amber-400 transition-colors"
+                      className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-base outline-none focus:border-amber-400 transition-colors"
                     >
                       <option value="">{t("profile_prefer_not_to_say")}</option>
                       <option value="male">{t("profile_male")}</option>
@@ -327,13 +327,13 @@ export default function ProfilePage() {
                     <button
                       onClick={() => handleSaveProfile("gender", genderValue)}
                       disabled={genderSaving}
-                      className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-sm font-bold transition-colors"
+                      className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-base font-bold transition-colors"
                     >
                       {genderSaving ? t("saving") : t("save")}
                     </button>
                     <button
                       onClick={() => setGenderEditing(false)}
-                      className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-sm transition-colors"
+                      className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-base transition-colors"
                     >
                       {t("cancel")}
                     </button>
@@ -344,17 +344,17 @@ export default function ProfilePage() {
               {/* Birth Year */}
               <div className="px-6 py-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_birth_year")}</span>
+                  <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">{t("profile_birth_year")}</span>
                   {!birthyearEditing && (
                     <div className="flex items-center gap-3">
                       {user.birthyear ? (
                         <span className="text-gray-900 dark:text-gray-100 font-semibold">{user.birthyear}</span>
                       ) : (
-                        <span className="text-gray-300 dark:text-gray-600 text-sm italic">{t("not_set")}</span>
+                        <span className="text-gray-300 dark:text-gray-600 text-base italic">{t("not_set")}</span>
                       )}
                       <button
                         onClick={() => { setBirthyearValue(user.birthyear ?? ""); setBirthyearEditing(true) }}
-                        className="text-xs text-amber-500 hover:text-amber-600 font-semibold transition-colors"
+                        className="text-sm text-amber-500 hover:text-amber-600 font-semibold transition-colors"
                       >
                         {user.birthyear ? t("change") : t("set")}
                       </button>
@@ -366,7 +366,7 @@ export default function ProfilePage() {
                     <select
                       value={birthyearValue}
                       onChange={(e) => setBirthyearValue(e.target.value)}
-                      className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm outline-none focus:border-amber-400 transition-colors"
+                      className="flex-1 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-base outline-none focus:border-amber-400 transition-colors"
                     >
                       <option value="">{t("profile_select_year")}</option>
                       {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - 10 - i).map((y) => (
@@ -376,13 +376,13 @@ export default function ProfilePage() {
                     <button
                       onClick={() => handleSaveProfile("birthyear", birthyearValue)}
                       disabled={birthyearSaving}
-                      className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-sm font-bold transition-colors"
+                      className="px-4 py-2 bg-green-700 hover:bg-green-800 disabled:opacity-40 text-white rounded-lg text-base font-bold transition-colors"
                     >
                       {birthyearSaving ? t("saving") : t("save")}
                     </button>
                     <button
                       onClick={() => setBirthyearEditing(false)}
-                      className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-sm transition-colors"
+                      className="px-3 py-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg text-base transition-colors"
                     >
                       {t("cancel")}
                     </button>
@@ -398,12 +398,12 @@ export default function ProfilePage() {
                   ) : (
                     <BellOff className="w-4 h-4 text-gray-400" />
                   )}
-                  <span className="text-xs uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">
+                  <span className="text-sm uppercase tracking-widest text-gray-700 dark:text-gray-400 font-medium">
                     {t("profile_notifications")}
                   </span>
                 </div>
                 {notifDenied ? (
-                  <span className="text-xs text-red-400 italic">{t("profile_notif_denied")}</span>
+                  <span className="text-sm text-red-400 italic">{t("profile_notif_denied")}</span>
                 ) : (
                   <button
                     onClick={handleToggleNotifications}
@@ -421,7 +421,7 @@ export default function ProfilePage() {
                 )}
               </div>
 
-              {profileError && <p className="px-6 pb-4 text-red-500 text-xs">{profileError}</p>}
+              {profileError && <p className="px-6 pb-4 text-red-500 text-sm">{profileError}</p>}
             </div>
           </div>
         ) : (
@@ -430,7 +430,7 @@ export default function ProfilePage() {
               <div className="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                 <User className="w-5 h-5 text-gray-300 dark:text-gray-600" />
               </div>
-              <span className="text-sm font-semibold text-gray-400">{t("profile_account_details")}</span>
+              <span className="text-base font-semibold text-gray-400">{t("profile_account_details")}</span>
             </div>
 
             <div className="px-6 py-10 flex flex-col items-center gap-6 text-center">
@@ -439,11 +439,11 @@ export default function ProfilePage() {
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-200 font-semibold text-base mb-1">{t("profile_not_signed_in")}</p>
-                <p className="text-gray-400 text-sm">{t("profile_sign_in_prompt")}</p>
+                <p className="text-gray-400 text-base">{t("profile_sign_in_prompt")}</p>
               </div>
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-700 hover:bg-green-800 text-white rounded-xl text-sm font-bold transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-700 hover:bg-green-800 text-white rounded-xl text-base font-bold transition-colors"
               >
                 <LogIn className="w-4 h-4" />
                 {t("profile_go_to_login")}
@@ -453,9 +453,6 @@ export default function ProfilePage() {
         )}
       </div>
 
-      <div className="px-8 pb-8 text-center text-gray-500 dark:text-gray-600 text-xs">
-        {t("powered_by")}
-      </div>
     </main>
     </AuthGuard>
   )

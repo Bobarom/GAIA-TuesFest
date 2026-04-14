@@ -120,7 +120,7 @@ export default function LoginPage() {
     setError("")
   }
 
-  const floatingLabel = "absolute left-4 top-3 text-muted-foreground pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:left-1 peer-focus:text-xs peer-focus:text-green-700 dark:peer-focus:text-green-400 peer-focus:font-bold peer-[:not(:placeholder-shown)]:-top-5 peer-[:not(:placeholder-shown)]:left-1 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-green-700 dark:peer-[:not(:placeholder-shown)]:text-green-400 peer-[:not(:placeholder-shown)]:font-bold"
+  const floatingLabel = "absolute left-4 top-3 text-muted-foreground pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:left-1 peer-focus:text-sm peer-focus:text-green-700 dark:peer-focus:text-green-400 peer-focus:font-bold peer-[:not(:placeholder-shown)]:-top-5 peer-[:not(:placeholder-shown)]:left-1 peer-[:not(:placeholder-shown)]:text-sm peer-[:not(:placeholder-shown)]:text-green-700 dark:peer-[:not(:placeholder-shown)]:text-green-400 peer-[:not(:placeholder-shown)]:font-bold"
   const inputClass = "peer w-full px-4 py-3 border-2 border-gray-100 dark:border-gray-700 rounded-xl outline-none focus:border-green-700 dark:focus:border-green-500 transition-colors text-foreground bg-card"
 
   const agricultureOptions = [
@@ -170,7 +170,7 @@ export default function LoginPage() {
           </h1>
 
           <h2
-            className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mb-8 animate-fade-in"
+            className="text-base text-muted-foreground uppercase tracking-widest font-semibold mb-8 animate-fade-in"
             style={{ animationDelay: '350ms' }}
           >
             {isLogin ? t("login_title") : step === 1 ? t("login_create_account") : t("login_about_you")}
@@ -243,11 +243,11 @@ export default function LoginPage() {
                 <label className={floatingLabel}>{t("login_password")}</label>
               </div>
 
-              {error && <p className="text-red-500 text-sm">{error}</p>}
+              {error && <p className="text-red-500 text-base">{error}</p>}
 
               <button
                 type="submit"
-                className="w-full py-2.5 bg-green-700 hover:bg-green-800 text-white rounded-xl font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
+                className="w-full py-2.5 bg-green-700 hover:bg-green-800 text-white rounded-xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5"
               >
                 {isLogin ? t("login_button") : t("login_continue")}
               </button>
@@ -259,7 +259,7 @@ export default function LoginPage() {
             <form onSubmit={handleStep2Submit} className="space-y-5">
               {/* Agriculture */}
               <div>
-                <label className="block text-left text-xs text-green-700 dark:text-green-400 font-bold mb-2 ml-1">
+                <label className="block text-left text-sm text-green-700 dark:text-green-400 font-bold mb-2 ml-1">
                   {t("login_agriculture_label")}
                 </label>
                 <div className="grid grid-cols-2 gap-2 text-left">
@@ -271,7 +271,7 @@ export default function LoginPage() {
                         onChange={() => handleAgricultureChange(value)}
                         className="accent-green-700 w-4 h-4"
                       />
-                      <span className="text-sm text-foreground">{t(key)}</span>
+                      <span className="text-base text-foreground">{t(key)}</span>
                     </label>
                   ))}
                 </div>
@@ -282,7 +282,7 @@ export default function LoginPage() {
                     onChange={() => handleAgricultureChange("other")}
                     className="accent-green-700 w-4 h-4"
                   />
-                  <span className="text-sm text-foreground">{t("login_other")}</span>
+                  <span className="text-base text-foreground">{t("login_other")}</span>
                 </label>
                 {formData.agriculture.includes("other") && (
                   <input
@@ -290,14 +290,14 @@ export default function LoginPage() {
                     placeholder={t("login_other_placeholder")}
                     value={formData.customAgriculture}
                     onChange={(e) => setFormData({ ...formData, customAgriculture: e.target.value })}
-                    className="mt-2 w-full px-4 py-2 border-2 border-gray-100 dark:border-gray-700 rounded-xl outline-none focus:border-green-700 dark:focus:border-green-500 transition-colors text-foreground bg-card text-sm"
+                    className="mt-2 w-full px-4 py-2 border-2 border-gray-100 dark:border-gray-700 rounded-xl outline-none focus:border-green-700 dark:focus:border-green-500 transition-colors text-foreground bg-card text-base"
                   />
                 )}
               </div>
 
               {/* Country */}
               <div className="relative">
-                <label className="block text-left text-xs text-green-700 dark:text-green-400 font-bold mb-1 ml-1">
+                <label className="block text-left text-sm text-green-700 dark:text-green-400 font-bold mb-1 ml-1">
                   {t("login_country")}
                 </label>
                 <select
@@ -328,19 +328,19 @@ export default function LoginPage() {
                 <label className={floatingLabel}>{t("login_province")}</label>
               </div>
 
-              {error && <p className="text-red-500 text-sm">{error}</p>}
+              {error && <p className="text-red-500 text-base">{error}</p>}
 
               <div className="flex gap-3">
                 <button
                   type="button"
                   onClick={() => { setStep(1); setError("") }}
-                  className="flex-1 py-2.5 border-2 border-green-700 text-green-700 dark:text-green-400 dark:border-green-500 hover:bg-green-50 dark:hover:bg-green-900/30 rounded-xl font-semibold text-sm transition-all duration-300"
+                  className="flex-1 py-2.5 border-2 border-green-700 text-green-700 dark:text-green-400 dark:border-green-500 hover:bg-green-50 dark:hover:bg-green-900/30 rounded-xl font-semibold text-base transition-all duration-300"
                 >
                   {t("back")}
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-2.5 bg-green-700 hover:bg-green-800 text-white rounded-xl font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
+                  className="flex-1 py-2.5 bg-green-700 hover:bg-green-800 text-white rounded-xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5"
                 >
                   {t("login_finish")}
                 </button>
@@ -349,7 +349,7 @@ export default function LoginPage() {
           )}
 
           {step === 1 && (
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-6 text-base text-muted-foreground">
               {isLogin ? t("login_no_account") : t("login_has_account")}
               <button
                 onClick={switchMode}

@@ -34,7 +34,7 @@ export default function AboutPage() {
       <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-5 flex items-center gap-4">
         <Link href="/" className="text-3xl font-black text-amber-500 tracking-widest hover:opacity-80 transition-opacity">GAIA</Link>
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-700" />
-        <span className="text-gray-400 text-sm font-medium uppercase tracking-widest">
+        <span className="text-gray-400 text-base font-medium uppercase tracking-widest">
           {t("about_heading")}
         </span>
       </div>
@@ -52,15 +52,15 @@ export default function AboutPage() {
                 value={id}
                 className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-stone-200 dark:border-gray-800 px-6 overflow-hidden"
               >
-                <AccordionTrigger className="text-base font-semibold text-stone-900 dark:text-stone-100 hover:no-underline py-5">
+                <AccordionTrigger className="text-lg font-semibold text-stone-900 dark:text-stone-100 hover:no-underline py-5">
                   <span className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                      <Icon className="w-4 h-4" />
+                    <span className="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5" />
                     </span>
                     {t(titleKey)}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-stone-600 dark:text-stone-400 leading-relaxed text-base pb-5">
+                <AccordionContent className="text-stone-600 dark:text-stone-400 leading-relaxed text-lg pb-5">
                   {t(contentKey)}
                 </AccordionContent>
               </AccordionItem>

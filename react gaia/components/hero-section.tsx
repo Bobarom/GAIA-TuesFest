@@ -1,20 +1,26 @@
 "use client"
 
-import { useEffect, useState, useRef, useMemo } from "react"
+import { useEffect, useState, useRef } from "react"
 import { ArrowRight, User, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/lib/language-context"
 
+type Particle = { id: number; left: number; size: number; duration: number; delay: number }
+
 function FloatingParticles() {
-  const particles = useMemo(() =>
-    Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      size: Math.random() * 4 + 2,
-      duration: Math.random() * 10 + 10,
-      delay: Math.random() * 10,
-    })), []
-  )
+  const [particles, setParticles] = useState<Particle[]>([])
+
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 20 }, (_, i) => ({
+        id: i,
+        left: Math.round(Math.random() * 100),
+        size: Math.round(Math.random() * 4 + 2),
+        duration: Math.round(Math.random() * 10 + 10),
+        delay: Math.round(Math.random() * 10),
+      }))
+    )
+  }, [])
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
