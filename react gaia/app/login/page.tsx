@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useLanguage } from "@/lib/language-context"
 
-const API_URL = "http://10.210.46.104:5500"
+const API_URL = "/api"
 
 const COUNTRIES = [
   "Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan",

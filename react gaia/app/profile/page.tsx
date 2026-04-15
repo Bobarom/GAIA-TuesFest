@@ -8,7 +8,7 @@ import { useLanguage } from "@/lib/language-context"
 import { subscribePush, unsubscribePush, isPushSubscribed } from "@/lib/use-notifications"
 import AuthGuard from "@/components/auth-guard"
 
-const API_URL = "http://10.210.46.104:5500"
+const API_URL = "/api"
 
 interface CurrentUser {
   id: number
