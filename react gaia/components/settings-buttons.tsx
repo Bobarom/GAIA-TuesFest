@@ -14,14 +14,35 @@ export function SettingsButtons() {
 
   return (
     <div className="fixed top-4 right-4 z-50">
-      <button
-        onClick={() => setLang(lang === "en" ? "bg" : "en")}
-        className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg text-base font-bold text-gray-700 dark:text-gray-200 hover:scale-105 transition-all duration-200"
-        aria-label="Toggle language"
+      <div
+        role="group"
+        aria-label="Select language"
+        className="flex items-center gap-1 p-1 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg"
       >
-        <Languages className="w-4 h-4" />
-        {lang === "en" ? "BG" : "EN"}
-      </button>
+        <Languages className="w-4 h-4 ml-1.5 mr-0.5 text-gray-500 dark:text-gray-400" aria-hidden="true" />
+        <button
+          onClick={() => setLang("en")}
+          aria-pressed={lang === "en"}
+          className={`px-3 py-1 rounded-full text-sm font-bold transition-all duration-200 ${
+            lang === "en"
+              ? "bg-amber-400 text-black shadow-sm"
+              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+          }`}
+        >
+          EN
+        </button>
+        <button
+          onClick={() => setLang("bg")}
+          aria-pressed={lang === "bg"}
+          className={`px-3 py-1 rounded-full text-sm font-bold transition-all duration-200 ${
+            lang === "bg"
+              ? "bg-amber-400 text-black shadow-sm"
+              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+          }`}
+        >
+          BG
+        </button>
+      </div>
     </div>
   )
 }

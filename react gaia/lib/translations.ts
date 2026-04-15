@@ -113,7 +113,7 @@ export const translations = {
     about_name_title: "The Name",
     about_name: "The name Gaia comes from the ancient Greek personification of the Earth. It also stands for Green Artificial Intelligence for Agriculture — a reminder of what the project is built to do. It reflects the project's ambition: not just to make individual farms more productive, but to contribute to a broader balance between human activity and the natural systems we all depend on. Gaia is an ongoing project — the sensor hardware, irrigation setup, and software are all actively developed and improved based on feedback from farmers in the field.",
 
-    // Recycling Wasted Water page
+    //Soil moisture page
     sg_label: "Sustainability",
     sg_heading: "Automatic Drip Irrigation",
     sg_subtitle: "How Gaia uses a tank of pre-filtered water and an ESP8266 microcontroller to water crops only when the soil actually needs it.",
@@ -155,7 +155,7 @@ export const translations = {
     sensors_refresh: "Refresh",
     sensors_temperature: "Temperature",
     sensors_humidity: "Humidity",
-    sensors_soil_moisture: "Soil Moisture",
+    sensors_soil_moisture: "Soil Moistaure",
     sensors_water_events: "Water Events",
 
     // Notifications
@@ -275,7 +275,7 @@ export const translations = {
     about_page_subtitle: "Интелигентна земеделска екосистема, изградена на вярването, че технологията и природата трябва да работят заедно.",
     about_page_explore: "Разгледайте проекта",
     about_what_is_gaia_title: "Какво е Gaia?",
-    about_what_is_gaia: "Gaia е платформа за умно земеделие, изградена около едно основно убеждение: технологията и природата трябва да работят заедно, а не една срещу друга. Тя е създадена, за да даде на съвременните фермери инструментите, от които се нуждаят, за да растат по-ефективно, да използват ресурсите отговорно и да вземат информирани решения, подкрепени с реални данни.",
+    about_what_is_gaia: "Gaia е платформа за умно земеделие, създадена с една проста, но силна идея: технологията трябва да работи в синхрон с природата. Тя дава на съвременните фермери лесни за използване инструменти, с които могат да отглеждат по-ефективно, да пестят ресурси и да вземат решения, базирани на реални данни, а не на предположения догадки.",
     about_sensors_ai_title: "Сензори и микроконтролер",
     about_sensors_ai: "В основата си Gaia използва микроконтролер ESP8266, свързан с мрежа от сензори, разположени из фермата. ESP8266 непрекъснато чете влажност на почвата, температура и осветеност и изпраща данните в реално време към платформата Gaia. Същият микроконтролер управлява и хардуера за поливане — когато отчетените стойности преминат зададените прагове, той директно включва или изключва водната помпа и вентилите, без да чака връзка с облака.",
     about_water_title: "Автоматично капково напояване",
@@ -346,7 +346,7 @@ export const translations = {
     chat_back: "Назад",
     chat_ai_assistant: "AI Асистент",
     chat_profile: "Профил",
-    chat_greeting: "Здравейте! Аз съм GAIA, вашият AI земеделски асистент. Имам достъп до вашия профил и данни от сензорите. Попитайте ме каквото и да е за вашата ферма!",
+    chat_greeting: "Здравейте! Аз съм GAIA, вашият AI асистент. Имам достъп до вашия профил и данни от сензорите. Попитайте ме каквото и да е за вашата ферма!",
     chat_thinking: "Мисля…",
     chat_placeholder: "Питайте за фермата, сензорите, съвети за култури…",
     chat_hint: "Enter за изпращане · Shift+Enter за нов ред",
