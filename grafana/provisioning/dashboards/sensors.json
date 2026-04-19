@@ -18,7 +18,7 @@
       "targets": [
         {
           "datasource": { "type": "postgres", "uid": "timescaledb-smartfarm" },
-          "rawSql": "SELECT $__timeGroupAlias(time,'5m'), avg(temperature) AS \"Temperature\" FROM sensor_data WHERE $__timeFilter(time) GROUP BY 1 ORDER BY 1",
+          "rawSql": "SELECT $__timeGroupAlias(time,'20s'), avg(temperature) AS \"Temperature\" FROM sensor_data WHERE $__timeFilter(time) GROUP BY 1 ORDER BY 1",
           "format": "time_series",
           "refId": "A"
         }
@@ -62,7 +62,7 @@
       "targets": [
         {
           "datasource": { "type": "postgres", "uid": "timescaledb-smartfarm" },
-          "rawSql": "SELECT $__timeGroupAlias(time,'5m'), avg(humidity) AS \"Humidity\" FROM sensor_data WHERE $__timeFilter(time) GROUP BY 1 ORDER BY 1",
+          "rawSql": "SELECT $__timeGroupAlias(time,'20s'), avg(humidity) AS \"Humidity\" FROM sensor_data WHERE $__timeFilter(time) GROUP BY 1 ORDER BY 1",
           "format": "time_series",
           "refId": "A"
         }
@@ -106,7 +106,7 @@
       "targets": [
         {
           "datasource": { "type": "postgres", "uid": "timescaledb-smartfarm" },
-          "rawSql": "SELECT $__timeGroupAlias(time,'5m'), avg(soil_moisture) AS \"Soil Moisture\" FROM sensor_data WHERE $__timeFilter(time) GROUP BY 1 ORDER BY 1",
+          "rawSql": "SELECT $__timeGroupAlias(time,'20s'), avg(soil_moisture) AS \"Soil Moisture\" FROM sensor_data WHERE $__timeFilter(time) GROUP BY 1 ORDER BY 1",
           "format": "time_series",
           "refId": "A"
         }

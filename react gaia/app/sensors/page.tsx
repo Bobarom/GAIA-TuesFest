@@ -7,7 +7,7 @@ import type { TranslationKey } from "@/lib/translations"
 import AuthGuard from "@/components/auth-guard"
 import { Footer } from "@/components/footer"
 
-const GRAFANA_BASE = "http://10.210.46.104:3000"
+const GRAFANA_BASE = "http://10.80.250.104:3000"
 const DASHBOARD_UID = "gaia-sensors"
 const DASHBOARD_SLUG = "gaia-sensor-dashboard"
 
