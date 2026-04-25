@@ -69,7 +69,7 @@ def get_db_connection():
         host=os.environ.get('DB_HOST', 'localhost'),
         database='smartfarm',
         user='farm_admin',
-        password='hackathon_password'
+        password='_password'
     )
 
 def init_db():
